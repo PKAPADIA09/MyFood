@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:myfood/view/GroceryListPage.dart';
+import 'package:myfood/view/ShoppingCartPage.dart';
+import 'package:myfood/view/BarcodeScanPage.dart';
 import './FridgePage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'ProfilePage.dart';
+import 'Menu.dart';
 
 class MainPage extends StatefulWidget {
   MainPage({Key key}) : super(key: key);
@@ -100,6 +104,29 @@ class _MainPageState extends State<MainPage> {
             ],
           ),
 
+          // row for the barcode scan button
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // barcode scan button
+              // will have to change this to IconButton when we have an icon
+              ElevatedButton(
+                child: Icon(Icons.menu, color: Colors.red),
+                style: ElevatedButton.styleFrom(
+                  shape: CircleBorder(),
+                  padding: EdgeInsets.all(20),
+                  primary: Colors.red,
+                ),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => BarcodeScanPage()));
+                },
+              )
+            ],
+          ),
+
           //Row of 4 buttons
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -107,13 +134,16 @@ class _MainPageState extends State<MainPage> {
               //Menu Button
               IconButton(
                 icon: Image.asset('assets/images/menu.png'),
-                iconSize: deviceHeight * .11,
-                onPressed: () {},
+                iconSize: deviceHeight * .1,
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Menu()));
+                },
               ),
               //Fridge Button
               IconButton(
                 icon: Image.asset('assets/images/fridge.png'),
-                iconSize: deviceHeight * .11,
+                iconSize: deviceHeight * .1,
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => FridgePage()));
@@ -122,14 +152,20 @@ class _MainPageState extends State<MainPage> {
               //Shopping Cart Button
               IconButton(
                 icon: Image.asset('assets/images/shopping_cart.png'),
-                iconSize: deviceHeight * .11,
-                onPressed: () {},
+                iconSize: deviceHeight * .1,
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ShoppingCartPage()));
+                },
               ),
               //Grocery List Button
               IconButton(
                 icon: Image.asset('assets/images/grocery_list.png'),
-                iconSize: deviceHeight * .11,
-                onPressed: () {},
+                iconSize: deviceHeight * .1,
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => GroceryListPage()));
+                },
               )
             ],
           ),
