@@ -5,7 +5,7 @@ import 'package:myfood/theme/approutes.dart';
 import 'package:myfood/net/firestore.dart';
 
 class RegisterScreen extends StatefulWidget {
-  RegisterScreen({Key key}) : super(key: key);
+  RegisterScreen({Key? key}) : super(key: key);
 
   @override
   _RegisterScreenState createState() => _RegisterScreenState();
@@ -55,7 +55,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide:
-                            BorderSide(width: 2, color: Colors.orange[700]),
+                            BorderSide(width: 2, color: Colors.orange[700]!),
                       ),
                     ))),
             Container(
@@ -76,7 +76,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           borderRadius: BorderRadius.circular(5.0)),
                       focusedBorder: OutlineInputBorder(
                         borderSide:
-                            BorderSide(width: 2, color: Colors.orange[700]),
+                            BorderSide(width: 2, color: Colors.orange[700]!),
                       ),
                     ))),
             SizedBox(height: 25),
@@ -103,7 +103,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide:
-                            BorderSide(width: 2, color: Colors.orange[700]),
+                            BorderSide(width: 2, color: Colors.orange[700]!),
                       ),
                     ))),
             Container(
@@ -129,7 +129,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide:
-                            BorderSide(width: 2, color: Colors.orange[700]),
+                            BorderSide(width: 2, color: Colors.orange[700]!),
                       ),
                     ))),
             SizedBox(height: 25.0),
@@ -138,17 +138,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
               width: 130,
               child: Material(
                 borderRadius: BorderRadius.circular(5.0),
-                child: RaisedButton(
+                child: ElevatedButton(
                     onPressed: () async {
                       await Firebase.initializeApp();
                       try {
-                        UserCredential user = await FirebaseAuth.instance
-                            .createUserWithEmailAndPassword(
-                                email: emailTextController.text.trim(),
-                                password: passwordTextController.text.trim());
-
-                        User update = FirebaseAuth.instance.currentUser;
-                        update.updateProfile(
+                        User? update = FirebaseAuth.instance.currentUser;
+                        update?.updateProfile(
                             displayName: emailTextController.text);
 
                         userCreate(emailTextController.text);
@@ -166,7 +161,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       //Validate code with backend to create user
                       //If validated, create user on backend and navigate to main menu
                     },
-                    color: Colors.orange[700],
                     child: Center(
                       child: Text(
                         "Sign Up",
@@ -184,11 +178,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
               width: 130,
               child: Material(
                 borderRadius: BorderRadius.circular(5.0),
-                child: RaisedButton(
+                child: ElevatedButton(
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    color: Colors.orange[700],
                     child: Center(
                       child: Text(
                         "Cancel",

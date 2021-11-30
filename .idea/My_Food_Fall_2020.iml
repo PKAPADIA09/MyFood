@@ -5,7 +5,30 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/MyFood/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/MyFood/.pub" />
+<<<<<<< HEAD
       <excludeFolder url="file://$MODULE_DIR$/MyFood/build" />
+=======
+      <excludeFolder url="file://$MODULE_DIR$/MyFood/ios/.symlinks/plugins/cloud_firestore/build" />
+      <excludeFolder url="file://$MODULE_DIR$/MyFood/ios/.symlinks/plugins/cloud_firestore/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/MyFood/ios/.symlinks/plugins/firebase_core/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/MyFood/ios/.symlinks/plugins/firebase_core/build" />
+      <excludeFolder url="file://$MODULE_DIR$/MyFood/ios/.symlinks/plugins/firebase_core/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/MyFood/ios/.symlinks/plugins/firebase_core/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/MyFood/ios/.symlinks/plugins/firebase_messaging/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/MyFood/ios/.symlinks/plugins/firebase_messaging/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/MyFood/ios/.symlinks/plugins/firebase_messaging/build" />
+      <excludeFolder url="file://$MODULE_DIR$/MyFood/ios/.symlinks/plugins/firebase_messaging/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/MyFood/ios/.symlinks/plugins/firebase_auth/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/MyFood/ios/.symlinks/plugins/firebase_auth/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/MyFood/ios/.symlinks/plugins/firebase_auth/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/MyFood/ios/.symlinks/plugins/firebase_auth/build" />
+      <excludeFolder url="file://$MODULE_DIR$/MyFood/ios/.symlinks/plugins/firebase_database/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/MyFood/ios/.symlinks/plugins/firebase_database/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/MyFood/ios/.symlinks/plugins/cloud_firestore/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/MyFood/ios/.symlinks/plugins/cloud_firestore/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/MyFood/ios/.symlinks/plugins/firebase_database/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/MyFood/ios/.symlinks/plugins/firebase_database/build" />
+>>>>>>> ab29787f9b12229c942061c1fc30738b8b19a34f
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

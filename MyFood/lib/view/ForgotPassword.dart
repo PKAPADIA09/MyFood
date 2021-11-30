@@ -9,7 +9,7 @@ class ForgotPassword extends StatefulWidget {
 }
 
 class _ForgotPasswordState extends State<ForgotPassword> {
-  String email = "";
+  late String email = "";
   var _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -47,10 +47,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 ),
                 child: TextFormField(
                   validator: (value) {
-                    if (value.isEmpty) {
+                    if (value != null && value.isEmpty) {
                       return "Please Enter Your Email";
                     } else {
-                      email = value;
+                      email = value!;
                     }
                     return null;
                   },
@@ -69,58 +69,58 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide:
-                          BorderSide(width: 2, color: Colors.orange[700]),
+                          BorderSide(width: 2, color: Colors.orange[700]!),
                     ),
                   ),
                 ),
               ),
-              RaisedButton(
-                  onPressed: () {
-                    if (_formKey.currentState.validate()) {
-                      FirebaseAuth.instance
-                          .sendPasswordResetEmail(email: email)
-                          .then((value) => print(
-                              "Check your email, We have sent you Reset Email."));
+              ElevatedButton(
+                onPressed: () {
+                  if (_formKey.currentState != null &&
+                      _formKey.currentState!.validate()) {
+                    FirebaseAuth.instance
+                        .sendPasswordResetEmail(email: email)
+                        .then((value) => print(
+                            "Check your email, We have sent you Reset Email."));
 
-                      //this is the dialog for the submit button. when the reset email is sent.
-                      showDialog(
-                        context: context,
-                        builder: (context) {
-                          return AlertDialog(
-                            title: Text("Almost There!"),
-                            content: Text(
-                                "Please check you email and click the link to reset password."),
-                            actions: <Widget>[
-                              FlatButton(
-                                child: Text("Okay"),
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => LoginScreen()));
-                                },
-                              ),
-                            ],
-                          );
-                        },
-                      );
-                    } //Send user email for password
-                  },
-                  color: Colors.orange[700],
-                  child: Center(
-                    child: Text(
-                      "Submit",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    //this is the dialog for the submit button. when the reset email is sent.
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          title: Text("Almost There!"),
+                          content: Text(
+                              "Please check you email and click the link to reset password."),
+                          actions: <Widget>[
+                            TextButton(
+                              child: Text("Okay"),
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => LoginScreen()));
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  } //Send user email for password
+                },
+                child: Center(
+                  child: Text(
+                    "Submit",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
                     ),
-                  )),
-              RaisedButton(
+                  ),
+                ),
+              ),
+              ElevatedButton(
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  color: Colors.orange[700],
                   child: Center(
                     child: Text(
                       "Cancel",

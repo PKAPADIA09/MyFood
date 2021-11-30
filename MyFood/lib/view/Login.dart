@@ -1,7 +1,6 @@
 import 'dart:ui';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:myfood/theme/approutes.dart';
 
 import './Register.dart';
 import './ForgotPassword.dart';
@@ -9,7 +8,7 @@ import './MainPage.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
-  LoginScreen({Key key, this.title}) : super(key: key);
+  LoginScreen({Key? key}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -19,8 +18,6 @@ class LoginScreen extends StatefulWidget {
   // case the title) provided by the parent (in this case the App widget) and
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
-
-  final String title;
 
   @override
   LoginState createState() => LoginState();
@@ -63,7 +60,7 @@ class LoginState extends State<LoginScreen> {
             ),
           ),
           actions: <Widget>[
-            FlatButton(
+            TextButton(
               child: Text(
                 'Understood',
                 style: TextStyle(
@@ -142,7 +139,7 @@ class LoginState extends State<LoginScreen> {
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide:
-                            BorderSide(width: 2, color: Colors.orange[700]),
+                            BorderSide(width: 2, color: Colors.orange[700]!),
                       ),
                     ),
                   ),
@@ -166,7 +163,7 @@ class LoginState extends State<LoginScreen> {
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide:
-                            BorderSide(width: 2, color: Colors.orange[700]),
+                            BorderSide(width: 2, color: Colors.orange[700]!),
                       ),
                     ),
                   ),
@@ -178,25 +175,37 @@ class LoginState extends State<LoginScreen> {
                     width: 130,
                     child: Material(
                       borderRadius: BorderRadius.circular(5),
-                      child: RaisedButton(
+                      child: ElevatedButton(
                         onPressed: () async {
                           await Firebase.initializeApp();
                           try {
-                            /*UserCredential user = await FirebaseAuth.instance
-                                .signInWithEmailAndPassword(
-                                    email: userController.text,
-                                    password: passwordController.text);*/
                             //final uid = user.user.uid;
-                            Navigator.of(context).pushNamed(Routes.main_page);
+                            Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => MainPage()),
+                                (e) => false);
                           } on FirebaseAuthException catch (e) {
                             if (e.code == 'user-not-found') {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                content: Text("User not Found"),
+                              ));
                               print('No user found for that email.');
                             } else if (e.code == 'wrong-password') {
-                              print('Wrong password provided for that user.');
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                content: Text(
+                                    "Wrong password provided for that user."),
+                              ));
+                            } else {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                content: Text("Error"),
+                              ));
                             }
                           }
                         },
-                        color: Colors.orange[700],
                         child: Center(
                           child: Text('Log In',
                               style: TextStyle(
@@ -213,9 +222,9 @@ class LoginState extends State<LoginScreen> {
                   ),
                   Container(
                     height: 30,
-                    width: 155,
-                    child: FlatButton(
-                      onPressed: () {
+                    width: 160,
+                    child: InkWell(
+                      onTap: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -237,8 +246,8 @@ class LoginState extends State<LoginScreen> {
                   Container(
                     height: 30,
                     width: 90,
-                    child: FlatButton(
-                      onPressed: () {
+                    child: InkWell(
+                      onTap: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
